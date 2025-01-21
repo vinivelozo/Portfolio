@@ -1,0 +1,14 @@
+# Automatically normalize line endings
+* text=auto
+
+# Specific configurations for certain file types
+*.sh text eol=lf
+*.java text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.properties text eol=lf

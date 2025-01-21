@@ -1,0 +1,25 @@
+
+# Ignore socket files
+*.sock
+
+# Ignore build files and dependencies
+node_modules/
+build/
+.gradle/
+out/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore database files
+data/database/
+data/
+
+# Specifically ignore the mysql.sock file
+data/database/mysql.sock

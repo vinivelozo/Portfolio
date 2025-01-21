@@ -1,0 +1,28 @@
+# Ignore database and temporary runtime files
+data/
+*.sock
+
+# Ignore node_modules folder
+node_modules/
+
+# Ignore build output directories
+dist/
+build/
+
+# Ignore IntelliJ IDEA project files
+*.iml
+.idea/
+
+# Ignore Gradle files
+.gradle/
+
+# Ignore log files
+*.log
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore any generated files from IDEs or OS
+*.swp
+*.tmp
