@@ -1,50 +1,40 @@
-import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import Navbar from './Navbar';
+import Home from './Home';
+import Projects from './Projects';
+import Education from './Education';
+import ContactMe from './ContactMe';
+import Login from './Login';
+import Review from './Review';
+import AdminReviews from './AdminReview';
+import EditProject from './EditProject';
+import AddProject from './AddProject';
 
-function App() {
-  const [count, setCount] = useState(0);
-  const [message, setMessage] = useState(''); // State to store the backend message
+const App = () => {
+  const [language, setLanguage] = useState('en');
 
-  // Fetch the message from the backend
-  useEffect(() => {
-    fetch('http://localhost:8080/api/hello') // Adjust the port if needed
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch the message');
-        }
-        return response.text();
-      })
-      .then((data) => setMessage(data))
-      .catch((error) => console.error('Error fetching message:', error));
-  }, []);
+  const changeLanguage = (newLanguage: string) => {
+    setLanguage(newLanguage);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <h2>{message || 'Loading message from backend...'}</h2> {/* Display backend message */}
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <Navbar activeSection="home" changeLanguage={changeLanguage} language={language} />
+      <Routes>
+        <Route path="/" element={<Home language={language}/>} />
+        <Route path="/projects" element={<Projects language={language}/>} />
+        <Route path="/add-project" element={<AddProject language={language}/>} />
+        <Route path="*" element={<Projects language={language}/>} /> {/* Default route */}
+        <Route path="/education" element={<Education language={language} />} />
+        <Route path="/contact" element={<ContactMe language={language} />} /> 
+        <Route path="/login" element={<Login language={language}/>} />
+        <Route path="/reviews" element={<Review language={language}/>} />
+        <Route path="/admin/reviews" element={<AdminReviews language={language} />} />
+        <Route path="/edit-project/:id" element={<EditProject language={language} />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

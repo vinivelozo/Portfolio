@@ -1,0 +1,114 @@
+/* ✅ Desktop version (unchanged) */
+.admin-reviews-container {
+  padding: 100px 20px 20px; /* ✅ Increased top padding */
+  max-width: 800px;
+  margin: auto;
+}
+
+.admin-reviews-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-reviews-table th,
+.admin-reviews-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.admin-reviews-table th {
+  background-color: #f4f4f4;
+}
+
+.admin-reviews-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* ✅ Toggle Switch */
+.toggle-switch {
+  width: 50px;
+  height: 25px;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-switch.on {
+  background: #4CAF50;
+}
+
+.toggle-switch.off {
+  background: #ddd;
+}
+
+.toggle-slider {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left 0.3s;
+}
+
+.toggle-switch.on .toggle-slider {
+  left: calc(100% - 22px);
+}
+
+.toggle-switch.off .toggle-slider {
+  left: 2px;
+}
+
+/* ✅ Mobile Responsive Fix */
+@media (max-width: 768px) {
+  .admin-reviews-container {
+    padding: 120px 10px 20px; /* ✅ Adjust padding for mobile */
+    max-width: 100%;
+    overflow-x: auto; /* ✅ Enable horizontal scrolling if needed */
+  }
+
+  .admin-reviews-table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap; /* ✅ Prevent table from breaking */
+  }
+
+  .admin-reviews-table thead {
+    display: none; /* ✅ Hide table headers */
+  }
+
+  .admin-reviews-table tbody,
+  .admin-reviews-table tr,
+  .admin-reviews-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-reviews-table tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+  }
+
+  .admin-reviews-table td {
+    text-align: left;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .admin-reviews-table td::before {
+    content: attr(data-label); /* ✅ Add labels for each row */
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+  }
+}

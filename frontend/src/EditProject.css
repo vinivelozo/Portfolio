@@ -1,0 +1,122 @@
+/* Edit Project Page Container */
+.edit-project-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #1e293b; /* Dark background */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Title Styling */
+.edit-project-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #38bdf8; /* Light blue accent */
+}
+
+/* Form Layout */
+.edit-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels */
+.edit-project-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Inputs & Textarea */
+.edit-project-input,
+.edit-project-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #38bdf8;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #222;
+}
+
+.edit-project-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* File Input */
+.edit-project-file-input {
+    padding: 8px;
+    cursor: pointer;
+}
+
+/* Image Preview */
+.edit-project-preview {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 2px solid #38bdf8;
+}
+
+/* Buttons */
+.edit-project-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Save Button */
+.edit-project-save {
+    background: #38bdf8;
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.edit-project-save:hover {
+    background: #0284c7;
+}
+
+/* Cancel Button */
+.edit-project-cancel {
+    background: #ff4d4d;
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.edit-project-cancel:hover {
+    background: #d32f2f;
+}
+
+/* Loading Text */
+.edit-project-loading {
+    font-size: 1.2rem;
+    color: #f8f8f8;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .edit-project-container {
+        max-width: 90%;
+        padding: 20px;
+    }
+}

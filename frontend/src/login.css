@@ -1,0 +1,153 @@
+/* General Page Styling */
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #0f172a; /* Deep blue for modern look */
+    min-height: 100vh;
+    width: 100vw;
+    color: white;
+  }
+  
+  /* Projects Container */
+  .projects-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 90%;
+  }
+  
+  /* Project Cards */
+  .project-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    background: #1e293b;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+  }
+  
+  .project-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Button Styling */
+  .view-project-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .view-project-btn:hover {
+    background-color: #1e40af;
+  }
+  
+  /* Login Container */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Login Card */
+  .login-card {
+    background: #1e293b;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+    width: 100%;
+  }
+  
+  .login-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .login-subtitle {
+    font-size: 1rem;
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form Elements */
+  .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #d1d5db;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #475569;
+    border-radius: 5px;
+    background: #334155;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .input-field:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 5px #3b82f6;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: #ef4444;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Login Button */
+  .login-button {
+    background: linear-gradient(45deg, #3b82f6, #1e40af);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .login-button:hover {
+    background: linear-gradient(45deg, #1e40af, #3b82f6);
+  }
+  
+  /* Forgot Password Link */
+  .forgot-password {
+    font-size: 0.9rem;
+    color: #60a5fa;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  

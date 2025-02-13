@@ -1,0 +1,418 @@
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+/* Home Page Layout */
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    height: 100vh;
+    padding: 4rem 10%;
+    color: white;
+}
+  
+/* Left Section - Text */
+.home-text {
+    flex: 1;
+    max-width: 1000px;
+}
+
+/* Title Fade-in Effect */
+.title {
+    font-size: 4rem; 
+    font-weight: bold;
+    color: #f9f8f4;
+    background: linear-gradient(90deg, #38bdf8, #f9f8f4, #38bdf8); 
+    background-size: 200% auto; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeIn 1.5s ease-in-out, shine 3s linear infinite;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Shiny text animation */
+@keyframes shine {
+    0% { background-position: 200% center; }
+    100% { background-position: 0% center; }
+}
+
+.highlight {
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 1.5rem;
+    max-width: 80%;
+    margin-top: 3px;
+    line-height: 1.6;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 30px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 14px 24px;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    margin-right: 12px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+/* SHINE EFFECT ON DOWNLOAD BUTTON */
+.download-cv {
+    background-color: #38bdf8;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Create the shine effect */
+.download-cv::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: skewX(-30deg);
+    transition: left 0.7s ease-in-out;
+}
+
+/* Animate the shine effect on hover */
+.download-cv:hover::before {
+    left: 100%;
+}
+
+/* Right Section - Image with Slide-in Animation */
+.home-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0; /* Initially hidden */
+    transform: translateX(50px); /* Starts off-screen */
+    animation: slideInRight 1.5s ease-in-out forwards;
+}
+
+/* Slide-in effect for the image */
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Image Styling */
+.home-image img {
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.home-reviews-section {
+    text-align: center;
+    background: whitesmoke;
+    border-radius: 10px;
+    min-height: 400px;
+    max-width: 80%; /* ✅ Reduce width for better spacing */
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    margin: 60px auto; /* ✅ Ensures equal left/right margins */
+}
+
+/* Carousel Slider */
+.home-reviews-slider {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2%; /* ✅ Balanced left/right spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Individual Review Card */
+.home-review-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    max-width: 300px;
+    color: #333; 
+}
+
+/* Ensure Author Name is Visible */
+.home-review-author {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222; /* ✅ Dark color for visibility */
+}
+
+/* Review Content */
+.home-review-content {
+    font-size: 1rem;
+    color: #444; /* ✅ Slightly darker for readability */
+    margin-top: 5px;
+}
+
+/* Star Rating */
+.home-review-rating {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff9800;
+    margin-top: 10px;
+}
+
+
+/* Fix Title Visibility */
+.home-reviews-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #222; /* ✅ Darker color for visibility */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Stars Under Title */
+.home-reviews-stars {
+    font-size: 1.5rem;
+    color: gold;
+    margin-bottom: 20px;
+}
+
+
+/* Custom Arrows */
+.custom-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    color: #444;
+    cursor: pointer;
+    z-index: 1000; /* Ensure arrows are above everything */
+    background: rgba(255, 255, 255, 0.9); /* Less transparency */
+    border-radius: 50%;
+    padding: 5px 10px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Left Arrow */
+.custom-arrow-left {
+    left: -40px; /* Adjust positioning to prevent overlap */
+}
+
+/* Right Arrow */
+.custom-arrow-right {
+    right: -40px; /* Adjust positioning */
+}
+
+/* Hover Effect: Remove Transparency */
+.custom-arrow:hover {
+    background: rgba(255, 255, 255, 1); /* Fully opaque */
+    transform: translateY(-50%) scale(1.1); /* Slight scale effect */
+}
+
+
+
+.tech-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  
+  .tech-icons-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  .tech-icons-container img {
+    max-width: 100%;
+    margin: 10px 5px;
+  }
+
+  /* Hide default react-slick arrows */
+.slick-prev:before,
+.slick-next:before {
+    display: none !important;
+}
+
+/* ✅ Mobile Layout Fix */
+@media (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 2rem 5%;
+    }
+
+    .home-text {
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        max-width: 90%;
+    }
+
+    /* Make buttons full width */
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 80%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* Fix Image Scaling */
+    .home-image {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .home-image img {
+        max-width: 90%;
+        height: auto;
+        border-radius: 10px;
+    }
+}
+
+/* Right Section - Image */
+.home-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    transform: translateX(50px);
+    animation: slideInRight 1.5s ease-in-out forwards;
+    
+}
+
+/* Image Scaling for Desktop */
+.home-image img {
+    width: 350px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Reviews Section */
+.home-reviews-section {
+    text-align: center;
+    background: whitesmoke;
+    border-radius: 10px;
+    max-width: 80%;
+    padding: 40px;
+    margin: 60px auto;
+    
+}
+
+/* Responsive Reviews Section */
+@media (max-width: 768px) {
+    .home-reviews-section {
+        padding: 20px;
+        max-width: 95%;
+    }
+}
+
+/* Carousel */
+.slick-prev:before, .slick-next:before {
+    display: none !important;
+}
+
+.home-reviews-slider {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Review Card */
+.home-review-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .home-review-card {
+        max-width: 250px;
+    }
+}
+
+/* ✅ Technologies Section */
+.tech-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+/* Technologies Section */
+.tech-icons-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    
+}
+
+.tech-icons-container img {
+    max-width: 80%;
+    margin: 5px 5px;
+    
+}
+
+/* Responsive Technologies Section */
+@media (max-width: 768px) {
+    .tech-icons-container {
+        gap: 15px;
+    }
+}

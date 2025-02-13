@@ -17,9 +17,4 @@ out/
 *.log
 *.tmp
 
-# Ignore database files
-data/database/
-data/
 
-# Specifically ignore the mysql.sock file
-data/database/mysql.sock

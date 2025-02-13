@@ -30,8 +30,11 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/portfolio
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=pwd
+      - SPRING_MAIL_USERNAME=${SPRING_MAIL_USERNAME}
+      - SPRING_MAIL_PASSWORD=${SPRING_MAIL_PASSWORD}
     depends_on:
       - database
+    
 
   frontend:
     build:
@@ -39,8 +42,8 @@ services:
       dockerfile: Dockerfile
     container_name: frontend
     ports:
-      - "5173:5173"
-
+      - "5174:5174"
+    
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin

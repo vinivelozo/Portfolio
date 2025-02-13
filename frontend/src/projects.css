@@ -1,0 +1,101 @@
+.projects-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* ✅ Ensures text & buttons remain visible */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  background-color: #1e293b; /* ✅ Dark background so text remains visible */
+  color: white; /* ✅ Ensure text remains readable */
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+/* Page Title */
+.projects-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: whitesmoke; 
+  text-align: center;
+  margin-top: 60px; /* ✅ Pushes title down */
+  margin-bottom: 20px;
+}
+
+/* Page Description */
+.projects-description {
+  font-size: 1.2rem;
+  color: #d1d5db; /* ✅ Light gray */
+  text-align: center;
+  margin-top: 20px; /* ✅ Adds space below title */
+  margin-bottom: 30px;
+}
+
+.project-card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #38bdf8 !important; /* ✅ Ensure text is blue */
+  white-space: nowrap; /* ✅ Prevents long titles from breaking layout */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-card p {
+  font-size: 1rem;
+  color: #d1d5db !important; /* ✅ Light gray text for readability */
+  min-height: 40px; /* ✅ Ensures description always has space */
+}
+
+.project-card img {
+  width: 100%;
+  max-height: 180px; /* ✅ Prevents oversized images */
+  object-fit: cover; /* ✅ Ensures image fits nicely inside the card */
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.project-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.edit-project-btn {
+  background-color: #f0ad4e;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-project-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-project-btn:hover {
+  background-color: #ec971f;
+}
+
+.delete-project-btn:hover {
+  background-color: #c9302c;
+}
+

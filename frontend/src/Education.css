@@ -1,0 +1,123 @@
+/* Page Layout */
+.education-container {
+    width: 80%;
+    max-width: 1200px;
+    padding: 3rem;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 auto; /* Centering the container */
+}
+
+/* Section Title - Ensure Visibility */
+.education-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(to right, #4f46e5, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+    display: block; /* Ensure it appears as a block element */
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* Timeline Structure */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 3rem;
+}
+
+/* Vertical Line */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 3rem;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #4f46e5, #22d3ee);
+}
+
+/* Timeline Event */
+.timeline-event {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: #23232e;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 2rem;
+    margin-left: 6rem; /* Pushes event away from the vertical line */
+}
+
+/* Hover Effect */
+.timeline-event:hover {
+    transform: translateX(10px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Timeline Icons */
+.timeline-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    background: linear-gradient(to right, #4f46e5, #22d3ee);
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: -3rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Timeline Content */
+.timeline-content {
+    flex-grow: 1;
+}
+
+.event-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+}
+
+.event-text {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    margin-bottom: 0.5rem;
+}
+
+.event-date {
+    font-size: 0.9rem;
+    color: #7dd3fc;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-event {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-left: 1rem;
+        margin-left: 0;
+    }
+
+    .timeline-icon {
+        position: static;
+        transform: none;
+        margin-bottom: 1rem;
+    }
+}
