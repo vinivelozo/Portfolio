@@ -33,9 +33,10 @@ public class ProjectController {
     public ResponseEntity<ProjectResponseModel> addProject(
             @RequestParam String projectName,
             @RequestParam String projectDescription,
+            @RequestParam String projectGithub,
             @RequestParam(value = "imageUploaded", required = false) MultipartFile imageUploaded) {
 
-        ProjectRequestModel request = new ProjectRequestModel(projectName, projectDescription);
+        ProjectRequestModel request = new ProjectRequestModel(projectName, projectDescription, projectGithub);
         return ResponseEntity.ok(projectService.addProject(request, imageUploaded));
     }
 
@@ -44,10 +45,11 @@ public class ProjectController {
             @PathVariable Integer id,
             @RequestParam String projectName,
             @RequestParam String projectDescription,
+            @RequestParam String projectGithub,
             @RequestParam(value = "imageUploaded", required = false) MultipartFile imageUploaded) {
 
         // ✅ Remove `null` for projectId
-        ProjectRequestModel request = new ProjectRequestModel(projectName, projectDescription);
+        ProjectRequestModel request = new ProjectRequestModel(projectName, projectDescription, projectGithub);
 
         return ResponseEntity.ok(projectService.updateProject(id, request, imageUploaded));
     }

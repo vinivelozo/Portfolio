@@ -17,5 +17,6 @@ CREATE TABLE IF NOT EXISTS projects (
     project_name TEXT NOT NULL,
     project_description TEXT,
     inventory_image TEXT,
-    image_uploaded LONGBLOB
+    image_uploaded LONGBLOB,
+    project_github TEXT
     );

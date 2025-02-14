@@ -32,10 +32,13 @@ public class Project {
     @Column(name = "image_uploaded", columnDefinition = "LONGBLOB")
     private byte[] imageUploaded;
 
+    @Column(name = "project_github")
+    private String projectGithub;
     // ✅ Constructor to auto-generate projectId
-    public Project(String projectName, String projectDescription) {
+    public Project(String projectName, String projectDescription, String projectGithub) {
         this.projectId = UUID.randomUUID().toString();
         this.projectName = projectName;
         this.projectDescription = projectDescription;
+        this.projectGithub = projectGithub;
     }
 }

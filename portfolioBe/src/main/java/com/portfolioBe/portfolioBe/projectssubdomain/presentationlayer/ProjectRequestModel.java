@@ -12,4 +12,5 @@ public class ProjectRequestModel {
 
     private String projectName;
     private String projectDescription;
+    private String projectGithub;
 }

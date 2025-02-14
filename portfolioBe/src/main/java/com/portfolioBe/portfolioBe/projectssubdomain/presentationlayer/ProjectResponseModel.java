@@ -15,4 +15,5 @@ public class ProjectResponseModel {
     private String projectDescription;
     private String inventoryImage;
     private String imageUploaded;
+    private String projectGithub;
 }

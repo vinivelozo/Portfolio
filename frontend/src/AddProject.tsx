@@ -5,6 +5,7 @@ import "./AddProject.css";
 const AddProject: React.FC<{ language: string }> = ({ language }) => {
   const [projectName, setProjectName] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
+  const [projectGithub, setProjectGithub] = useState(""); // ✅ New field
   const [imageUploaded, setImageUploaded] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const AddProject: React.FC<{ language: string }> = ({ language }) => {
     const formData = new FormData();
     formData.append("projectName", projectName);
     formData.append("projectDescription", projectDescription);
+    formData.append("projectGithub", projectGithub); // ✅ Send GitHub URL
     if (imageUploaded) {
       formData.append("imageUploaded", imageUploaded);
     }
@@ -33,13 +35,9 @@ const AddProject: React.FC<{ language: string }> = ({ language }) => {
 
       if (!response.ok) throw new Error(language === 'en' ? "Failed to add project" : "Échec de l'ajout du projet");
 
-      navigate("/projects"); // Redirect to projects page after successful submission
+      navigate("/projects"); // ✅ Redirect after success
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError(language === 'en' ? "An unknown error occurred." : "Une erreur inconnue est survenue.");
-      }
+      setError(err instanceof Error ? err.message : language === 'en' ? "An unknown error occurred." : "Une erreur inconnue est survenue.");
     }
   };
 
@@ -63,6 +61,15 @@ const AddProject: React.FC<{ language: string }> = ({ language }) => {
           onChange={(e) => setProjectDescription(e.target.value)}
           className="add-project-textarea"
           required
+        />
+
+        <label className="add-project-label">{language === 'en' ? "GitHub Repository URL:" : "Lien du dépôt GitHub :"}</label>
+        <input
+          type="url"
+          value={projectGithub}
+          onChange={(e) => setProjectGithub(e.target.value)}
+          className="add-project-input"
+          placeholder="https://github.com/your-repo"
         />
 
         <label className="add-project-label">{language === 'en' ? "Upload Image:" : "Télécharger une image :"}</label>

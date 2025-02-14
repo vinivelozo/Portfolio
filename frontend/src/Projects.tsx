@@ -9,8 +9,16 @@ interface Project {
   projectName: string;
   projectDescription: string;
   inventoryImage: string | null;
-  imageUploaded: string | null; // Store the Base64 image as a string
+  imageUploaded: string | null;
+  projectGithub: string | null;
 }
+
+// ✅ Image Mapping based on project names
+const projectImages: { [key: string]: string } = {
+  "Pet Clinic": "/vet.jpg",
+  "Watch Store": "/rolex.jpg",
+  "Restaurant Management": "/resto.jpg",
+};
 
 const Projects: React.FC<{ language: string }> = ({ language }) => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -18,7 +26,6 @@ const Projects: React.FC<{ language: string }> = ({ language }) => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // Fetch projects from the backend
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -37,7 +44,6 @@ const Projects: React.FC<{ language: string }> = ({ language }) => {
     }
   };
 
-  // Delete Project
   const handleDelete = async (id: number) => {
     if (!window.confirm(language === 'en' ? "Are you sure you want to delete this project?" : "Êtes-vous sûr de vouloir supprimer ce projet ?")) return;
 
@@ -48,7 +54,6 @@ const Projects: React.FC<{ language: string }> = ({ language }) => {
 
       if (!response.ok) throw new Error("Failed to delete project");
 
-      // Remove deleted project from state
       setProjects((prevProjects) => prevProjects.filter((project) => project.id !== id));
     } catch (err) {
       console.error("Error deleting project:", err);
@@ -56,12 +61,10 @@ const Projects: React.FC<{ language: string }> = ({ language }) => {
     }
   };
 
-  // Edit Project (Navigates to Edit Page)
   const handleEdit = (id: number) => {
     navigate(`/edit-project/${id}`);
   };
 
-  // Add Project (Navigates to Add Project Page)
   const handleAddProject = () => {
     navigate("/add-project");
   };
@@ -70,43 +73,31 @@ const Projects: React.FC<{ language: string }> = ({ language }) => {
     <div className="page">
       <h1 className="projects-title">{language === 'en' ? "Projects" : "Projets"}</h1>
   
-      {/* ✅ Add Project Button */}
       <button className="add-project-btn" onClick={handleAddProject}>
         {language === 'en' ? "Add Project" : "Ajouter un projet"}
       </button>
 
-      <br />
       <p className="projects-description">
         {language === 'en' ? "Here are some of the projects I've worked on:" : "Voici quelques projets sur lesquels j'ai travaillé :"}
       </p>
   
-      {/* ✅ Loading State */}
       {loading && <p>{language === 'en' ? "Loading projects..." : "Chargement des projets..."}</p>}
-      
-      {/* ✅ Error Message */}
       {error && <p className="error">{error}</p>}
-
-      {/* ✅ No Projects Available */}
       {!loading && !error && projects.length === 0 && <p>{language === 'en' ? "No projects available yet." : "Aucun projet disponible pour le moment."}</p>}
 
       <div className="projects-container">
         {projects.map((project) => (
           <div key={project.id} className="project-card">
-            {/* ✅ Display Image Properly */}
-            {project.imageUploaded ? (
-              <img
-                src={project.imageUploaded} // Using the Base64 string directly
-                alt={project.projectName}
-                className="project-image"
-              />
-            ) : (
-              <img src="/placeholder.png" alt="Placeholder" className="project-image" />
-            )}
+            {/* ✅ Check for uploaded image first, then use mapped images */}
+            <img
+              src={project.imageUploaded || projectImages[project.projectName] || "/resto.jpg"}
+              alt={project.projectName}
+              className="project-image"
+            />
 
             <h2>{project.projectName}</h2>
             <p>{project.projectDescription}</p>
 
-            {/* ✅ Buttons for Edit and Delete */}
             <div className="project-buttons">
               <button className="edit-project-btn" onClick={() => handleEdit(project.id)}>
                 {language === 'en' ? "Edit" : "Modifier"}
@@ -114,6 +105,18 @@ const Projects: React.FC<{ language: string }> = ({ language }) => {
               <button className="delete-project-btn" onClick={() => handleDelete(project.id)}>
                 {language === 'en' ? "Delete" : "Supprimer"}
               </button>
+
+              {/* ✅ View Project Button (only if GitHub URL exists) */}
+              {project.projectGithub && (
+                <a 
+                  href={project.projectGithub} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="view-project-btn"
+                >
+                  {language === 'en' ? "View Project" : "Voir le projet"}
+                </a>
+              )}
             </div>
           </div>
         ))}

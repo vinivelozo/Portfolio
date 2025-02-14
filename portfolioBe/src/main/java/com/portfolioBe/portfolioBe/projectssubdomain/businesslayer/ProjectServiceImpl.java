@@ -50,6 +50,7 @@ public class ProjectServiceImpl implements ProjectService{
         Project project = new Project();
         project.setProjectName(projectRequestModel.getProjectName());
         project.setProjectDescription(projectRequestModel.getProjectDescription());
+        project.setProjectGithub(projectRequestModel.getProjectGithub());
         project.setProjectId(UUID.randomUUID().toString()); // Auto-generate project ID
 
         if (imageUploaded != null && !imageUploaded.isEmpty()) {
@@ -77,6 +78,7 @@ public class ProjectServiceImpl implements ProjectService{
         return projectRepository.findById(id).map(existingProject -> {
             existingProject.setProjectName(projectRequestModel.getProjectName());
             existingProject.setProjectDescription(projectRequestModel.getProjectDescription());
+            existingProject.setProjectGithub(projectRequestModel.getProjectGithub());
 
             // ✅ Handle image update
             if (imageUploaded != null && !imageUploaded.isEmpty()) {
@@ -108,6 +110,7 @@ public class ProjectServiceImpl implements ProjectService{
         responseModel.setProjectName(project.getProjectName());
         responseModel.setProjectDescription(project.getProjectDescription());
         responseModel.setInventoryImage(project.getInventoryImage());
+        responseModel.setProjectGithub(project.getProjectGithub());
 
         // ✅ Ensure imageUploaded is properly converted to Base64
         if (project.getImageUploaded() != null) {
