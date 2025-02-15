@@ -1,0 +1,6 @@
+[build]
+  builder = "docker"
+  dockerfile = "portfolioBe/Dockerfile"
+
+[start]
+  startCmd = "cd portfolioBe && java -jar build/libs/*.jar"
