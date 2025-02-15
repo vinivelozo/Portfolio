@@ -1,5 +1,5 @@
 [build]
-  builder = "docker"
+  provider = "docker"
   dockerfile = "portfolioBe/Dockerfile"
 
 [start]
