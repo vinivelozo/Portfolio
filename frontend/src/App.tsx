@@ -13,7 +13,7 @@ import AddProject from "./AddProject";
 
 const App = () => {
   const [language, setLanguage] = useState("en");
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
 
   const changeLanguage = (newLanguage: string) => {
     setLanguage(newLanguage);
@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar activeSection="home" changeLanguage={changeLanguage} language={language} isAdmin={!!token} />
+      <Navbar activeSection="home" changeLanguage={changeLanguage} language={language} isAdmin={!!token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<Home language={language} />} />
         <Route path="/projects" element={<Projects language={language} isAdmin={!!token} />} />

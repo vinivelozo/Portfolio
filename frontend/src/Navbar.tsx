@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 
-const Navbar: React.FC<{ activeSection: string; changeLanguage: (language: string) => void; language: string; isAdmin: boolean }> = ({
+const Navbar: React.FC<{ activeSection: string; changeLanguage: (language: string) => void; language: string; isAdmin: boolean; setToken: (token: string | null) => void; }> = ({
   activeSection,
   changeLanguage,
   language,
   isAdmin,
+  setToken
 }) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +30,8 @@ const Navbar: React.FC<{ activeSection: string; changeLanguage: (language: strin
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("isAdmin"); // 🔹 Clear admin status on logout
-    navigate("/login");
-    window.location.reload(); // Refresh the page to update UI
+    setToken(null)
+    navigate("/");
   };
 
   return (
