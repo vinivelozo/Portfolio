@@ -24,7 +24,7 @@ const EditProject: React.FC<{ language: string }> = ({ language }) => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/projects/${id}`);
+        const response = await fetch(`https://portfoliobe-production-cf2e.up.railway.app/api/projects/${id}`);
         if (!response.ok) throw new Error(language === 'en' ? "Failed to fetch project" : "Échec de la récupération du projet");
         const data: Project = await response.json();
 
