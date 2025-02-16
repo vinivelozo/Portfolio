@@ -34,7 +34,7 @@ const AdminReviews: React.FC<{ language: string }> = ({ language }) => {
 
   const toggleVisibility = async (id: number, currentVisibility: boolean) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/reviews/${id}/visibility`, {
+      const response = await fetch(`https://portfoliobe-production-cf2e.up.railway.app/api/reviews/${id}/visibility`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ visible: !currentVisibility }),

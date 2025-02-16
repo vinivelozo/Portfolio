@@ -29,8 +29,8 @@ const Navbar: React.FC<{ activeSection: string; changeLanguage: (language: strin
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("isAdmin"); // 🔹 Clear admin status on logout
-    navigate("/login");
-    window.location.reload(); // Refresh the page to update UI
+    navigate("/login", { replace: true });
+    
   };
 
   return (
