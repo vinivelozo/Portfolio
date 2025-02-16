@@ -34,7 +34,7 @@ const ContactMe: React.FC<{ language: string }> = ({ language }) => {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/contact/send", {
+      const response = await fetch("https://portfoliobe-production-cf2e.up.railway.app/api/contact/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, language }),

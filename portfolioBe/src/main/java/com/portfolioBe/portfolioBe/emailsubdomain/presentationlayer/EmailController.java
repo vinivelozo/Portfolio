@@ -11,7 +11,7 @@ import javax.mail.MessagingException;
 import java.util.HashMap;
 import java.util.Map;
 
-@CrossOrigin(origins = {"http://localhost:5174"},allowCredentials = "true")
+@CrossOrigin(origins = {"http://localhost:5174", "https://portfolio-b3qf.vercel.app"}, allowCredentials = "true")
 @Slf4j
 @RestController
 @RequiredArgsConstructor

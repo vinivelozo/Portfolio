@@ -18,7 +18,7 @@ const AdminReviews: React.FC<{ language: string }> = ({ language }) => {
   useEffect(() => {
     const fetchAllReviews = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/reviews/all");
+        const response = await fetch("https://portfoliobe-production-cf2e.up.railway.app/api/reviews/all");
         if (!response.ok) throw new Error(language === 'en' ? "Failed to fetch reviews" : "Échec de la récupération des avis");
         const data: Review[] = await response.json();
         setReviews(data);

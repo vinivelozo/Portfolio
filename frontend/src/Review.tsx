@@ -30,7 +30,7 @@ const Review: React.FC<{ language: string }> = ({ language }) => {
       createdAt
     };
   
-    fetch("http://localhost:8080/api/reviews", {
+    fetch("https://portfoliobe-production-cf2e.up.railway.app/api/reviews", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newReview),

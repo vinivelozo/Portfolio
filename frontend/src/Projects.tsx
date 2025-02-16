@@ -32,7 +32,7 @@ const Projects: React.FC<{ language: string; isAdmin: boolean }> = ({ language, 
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/projects");
+      const response = await fetch("https://portfoliobe-production-cf2e.up.railway.app/api/projects");
       if (!response.ok) throw new Error("Failed to fetch projects");
 
       const data: Project[] = await response.json();
@@ -48,7 +48,7 @@ const Projects: React.FC<{ language: string; isAdmin: boolean }> = ({ language, 
     if (!window.confirm(language === "en" ? "Are you sure you want to delete this project?" : "Êtes-vous sûr de vouloir supprimer ce projet ?")) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/api/projects/${id}`, {
+      const response = await fetch(`https://portfoliobe-production-cf2e.up.railway.app/api/projects/${id}`, {
         method: "DELETE",
       });
 

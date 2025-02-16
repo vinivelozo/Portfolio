@@ -41,7 +41,7 @@ const Home: React.FC<{ language: string }> = ({ language }) => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/reviews");
+        const response = await fetch("https://portfoliobe-production-cf2e.up.railway.app/api/reviews");
         if (!response.ok) throw new Error("Failed to fetch reviews");
         const data: ApiReview[] = await response.json();
   

@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/projects")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin(origins = {"http://localhost:5174", "https://portfolio-b3qf.vercel.app"})
 public class ProjectController {
 
     private final ProjectService projectService;
