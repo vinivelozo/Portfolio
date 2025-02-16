@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS projects (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     project_id VARCHAR(36) NOT NULL,
     project_name TEXT NOT NULL,
-    project_description LONGTEXT,
+    project_description TEXT,
     inventory_image TEXT,
     image_uploaded LONGBLOB,
     project_github TEXT

@@ -22,7 +22,7 @@ public class Project {
     @Column(name = "project_name", nullable = false)
     private String projectName;
 
-    @Column(name = "project_description")
+    @Column(name = "project_description", columnDefinition = "TEXT")
     private String projectDescription;
 
     @Column(name = "inventory_image")
