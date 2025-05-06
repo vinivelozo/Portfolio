@@ -15,5 +15,7 @@ public interface ReviewService {
 
     void updateReviewVisibility(Integer id, boolean visible);
 
+    void deleteReview(Integer id); // ✅ New method to delete a review
+
 
 }

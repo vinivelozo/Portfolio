@@ -40,5 +40,11 @@ public class ReviewController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteReview(@PathVariable Integer id) {
+        reviewService.deleteReview(id);
+        return ResponseEntity.ok().build();
+    }
+
 
 }

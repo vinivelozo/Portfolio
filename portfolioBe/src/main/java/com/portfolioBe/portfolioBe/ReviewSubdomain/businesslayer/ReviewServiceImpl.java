@@ -66,6 +66,16 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public void deleteReview(Integer id) {
+        Optional<Review> optionalReview = reviewRepository.findById(id);
+        if (optionalReview.isPresent()) {
+            reviewRepository.delete(optionalReview.get());
+        } else {
+            throw new RuntimeException("Review not found");
+        }
+    }
+
+    @Override
     public void updateReviewVisibility(Integer id, boolean visible) {
         Optional<Review> optionalReview = reviewRepository.findById(id);
         if (optionalReview.isPresent()) {

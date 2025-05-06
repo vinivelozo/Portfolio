@@ -6,7 +6,6 @@ interface Review {
   username: string;
   comment: string;
   stars: number;
-  createdAt: string;
   visible: boolean;
 }
 
@@ -52,6 +51,23 @@ const AdminReviews: React.FC<{ language: string }> = ({ language }) => {
       console.error("Error updating review visibility:", error);
     }
   };
+
+  const deleteReview = async (id: number) => {
+    try {
+      const response = await fetch(`https://portfoliobe-production-cf2e.up.railway.app/api/reviews/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+  
+      if (!response.ok) throw new Error(language === 'en' ? "Failed to delete review" : "Échec de la suppression de l'avis");
+  
+      // Remove the deleted review from the state
+      setReviews((prevReviews) => prevReviews.filter((review) => review.id !== id));
+  
+    } catch (error) {
+      console.error("Error deleting review:", error);
+    }
+  };
   
 
   return (
@@ -69,6 +85,7 @@ const AdminReviews: React.FC<{ language: string }> = ({ language }) => {
             <th>{language === 'en' ? "Comment" : "Commentaire"}</th>
             <th>{language === 'en' ? "Stars" : "Étoiles"}</th>
             <th>{language === 'en' ? "Visibility" : "Visibilité"}</th>
+            <th>{language === 'en' ? "Actions" : "Actions"}</th>
           </tr>
         </thead>
         <tbody>
@@ -84,6 +101,20 @@ const AdminReviews: React.FC<{ language: string }> = ({ language }) => {
                 >
                   <div className="toggle-slider"></div>
                 </div>
+                </td>
+              <td>
+                <button 
+                  className="delete-button" 
+                  onClick={() => {
+                    if (window.confirm(language === 'en' 
+                      ? "Are you sure you want to delete this review?" 
+                      : "Êtes-vous sûr de vouloir supprimer cet avis?")) {
+                      deleteReview(review.id);
+                    }
+                  }}
+                >
+                  {language === 'en' ? "Delete" : "Supprimer"}
+                </button>
               </td>
             </tr>
           ))}
