@@ -5,7 +5,6 @@ const Review: React.FC<{ language: string }> = ({ language }) => {
   const [username, setUsername] = useState('');
   const [stars, setStars] = useState(0);
   const [comment, setComment] = useState('');
-  const [createdAt, setCreatedAt] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -16,8 +15,8 @@ const Review: React.FC<{ language: string }> = ({ language }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   
-    if (!username || !comment || stars === 0 || !createdAt) {
-      setError(language === 'en' ? "Please enter your name, a comment, select a star rating, and choose a date." : "Veuillez entrer votre nom, un commentaire, sélectionner une note et choisir une date.");
+    if (!username || !comment || stars === 0) {
+      setError(language === 'en' ? "Please enter your name, a comment, and select a star rating." : "Veuillez entrer votre nom, un commentaire et sélectionner une note.");
       return;
     }
     setError(null);
@@ -26,8 +25,7 @@ const Review: React.FC<{ language: string }> = ({ language }) => {
     const newReview = {
       username,
       stars,
-      comment,
-      createdAt
+      comment
     };
   
     fetch("https://portfoliobe-production-cf2e.up.railway.app/api/reviews", {
@@ -45,7 +43,6 @@ const Review: React.FC<{ language: string }> = ({ language }) => {
         setUsername("");
         setStars(0);
         setComment("");
-        setCreatedAt("");
         setSuccessMessage(language === 'en' ? "Your review has been successfully submitted!" : "Votre avis a été soumis avec succès!");
       })
       .catch(() => setError(language === 'en' ? "Error submitting review. Please try again." : "Erreur lors de la soumission de l'avis. Veuillez réessayer."));
@@ -84,13 +81,6 @@ const Review: React.FC<{ language: string }> = ({ language }) => {
             placeholder={language === 'en' ? "Write your review..." : "Écrivez votre avis..."}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            required
-          />
-
-          <input
-            type="datetime-local"
-            value={createdAt}
-            onChange={(e) => setCreatedAt(e.target.value)}
             required
           />
 

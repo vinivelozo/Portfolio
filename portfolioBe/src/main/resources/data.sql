@@ -1,10 +1,10 @@
-INSERT INTO reviews (username, stars, comment, created_at, visible) VALUES ('JohnDoe', 4, 'Great service!', '2022-01-30 12:30:00', TRUE);
-INSERT INTO reviews (username, stars, comment, created_at, visible) VALUES ('AliceSmith', 5, 'Excellent experience!', '2022-01-30 12:30:00', TRUE);
-INSERT INTO reviews (username, stars, comment, created_at, visible) VALUES ('Viniveloz', 3, 'Could be better', '2022-01-30 12:30:00', TRUE);
-INSERT INTO reviews (username, stars, comment, created_at, visible) VALUES ('hehehhe', 3, 'Nice website', '2022-08-30 12:30:00', TRUE);
-INSERT INTO reviews (username, stars, comment, created_at, visible) VALUES ('Lol123', 3, 'Could be better', '2022-04-30 12:30:00', FALSE);
-INSERT INTO reviews (username, stars, comment, created_at, visible) VALUES ('gitgituser', 3, 'Could be better', '2022-03-30 12:30:00', TRUE);
-INSERT INTO reviews (username, stars, comment, created_at, visible) VALUES ('pushforce', 3, 'Could be better', '2022-07-30 12:30:00', FALSE);
+INSERT INTO reviews (username, stars, comment, visible) VALUES ('JohnDoe', 4, 'Great service!', TRUE);
+INSERT INTO reviews (username, stars, comment, visible) VALUES ('AliceSmith', 5, 'Excellent experience!', TRUE);
+INSERT INTO reviews (username, stars, comment, visible) VALUES ('Viniveloz', 3, 'Could be better', TRUE);
+INSERT INTO reviews (username, stars, comment, visible) VALUES ('hehehhe', 3, 'Nice website', TRUE);
+INSERT INTO reviews (username, stars, comment, visible) VALUES ('Lol123', 3, 'Could be better', FALSE);
+INSERT INTO reviews (username, stars, comment, visible) VALUES ('gitgituser', 3, 'Could be better', TRUE);
+INSERT INTO reviews (username, stars, comment, visible) VALUES ('pushforce', 3, 'Could be better', FALSE);
 
 INSERT INTO projects (project_id, project_name, project_description, inventory_image, image_uploaded, project_github)
 VALUES ('550e8400-e29b-41d4-a716-446655440000', 'Pet Clinic', 'As a Champlain College - St. Lambert Computer Science student, I am contributing to the Spring Boot Microservices Petclinic project. This hands-on experience helps me learn Scrum, version control, issue tracking, testing, CI, and more in a real-world development environment.', NULL, NULL, 'https://github.com/cgerard321/champlain_petclinic');

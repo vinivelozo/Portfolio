@@ -12,6 +12,5 @@ public class ReviewResponseModel {
     private String username;
     private Integer stars;
     private String comment;
-    private LocalDateTime createdAt;
     private boolean visible;
 }

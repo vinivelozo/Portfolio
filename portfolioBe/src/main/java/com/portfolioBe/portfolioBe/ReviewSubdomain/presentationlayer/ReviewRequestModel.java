@@ -14,5 +14,5 @@ public class ReviewRequestModel {
     private String username;
     private Integer stars;
     private String comment;
-    private LocalDateTime createdAt;
+
 }
