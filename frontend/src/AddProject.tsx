@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddProject.css";
 
 const AddProject: React.FC<{ language: string }> = ({ language }) => {
   const [projectName, setProjectName] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
-  const [projectGithub, setProjectGithub] = useState(""); // ✅ New field
+  const [projectGithub, setProjectGithub] = useState("");
   const [imageUploaded, setImageUploaded] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isFormValid, setIsFormValid] = useState(false);
   const navigate = useNavigate();
+
+  // Check if all required fields are filled
+  useEffect(() => {
+    const isValid = 
+      projectName.trim() !== "" && 
+      projectDescription.trim() !== "" && 
+      projectGithub.trim() !== "" && 
+      imageUploaded !== null;
+    
+    setIsFormValid(isValid);
+  }, [projectName, projectDescription, projectGithub, imageUploaded]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -19,10 +31,17 @@ const AddProject: React.FC<{ language: string }> = ({ language }) => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    if (!isFormValid) {
+      setError(language === 'en' 
+        ? "Please fill in all fields and upload an image." 
+        : "Veuillez remplir tous les champs et télécharger une image.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("projectName", projectName);
     formData.append("projectDescription", projectDescription);
-    formData.append("projectGithub", projectGithub); // ✅ Send GitHub URL
+    formData.append("projectGithub", projectGithub);
     if (imageUploaded) {
       formData.append("imageUploaded", imageUploaded);
     }
@@ -35,7 +54,7 @@ const AddProject: React.FC<{ language: string }> = ({ language }) => {
 
       if (!response.ok) throw new Error(language === 'en' ? "Failed to add project" : "Échec de l'ajout du projet");
 
-      navigate("/projects"); // ✅ Redirect after success
+      navigate("/projects");
     } catch (err) {
       setError(err instanceof Error ? err.message : language === 'en' ? "An unknown error occurred." : "Une erreur inconnue est survenue.");
     }
@@ -70,6 +89,7 @@ const AddProject: React.FC<{ language: string }> = ({ language }) => {
           onChange={(e) => setProjectGithub(e.target.value)}
           className="add-project-input"
           placeholder="https://github.com/your-repo"
+          required
         />
 
         <label className="add-project-label">{language === 'en' ? "Upload Image:" : "Télécharger une image :"}</label>
@@ -78,9 +98,16 @@ const AddProject: React.FC<{ language: string }> = ({ language }) => {
           accept="image/*"
           onChange={handleFileChange}
           className="add-project-file-input"
+          required
         />
 
-        <button type="submit" className="add-project-button">{language === 'en' ? "Submit" : "Soumettre"}</button>
+        <button 
+          type="submit" 
+          className={`add-project-button ${!isFormValid ? 'disabled-button' : ''}`}
+          disabled={!isFormValid}
+        >
+          {language === 'en' ? "Submit" : "Soumettre"}
+        </button>
       </form>
     </div>
   );

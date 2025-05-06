@@ -70,6 +70,28 @@
     background: #0284c7;
 }
 
+/* Disabled Button */
+.add-project-button.disabled-button {
+    background: #7cabc7;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.add-project-button.disabled-button:hover {
+    background: #7cabc7;
+}
+
+/* Required Field Indicator */
+.add-project-input:required,
+.add-project-textarea:required {
+    border-left: 3px solid #38bdf8;
+}
+
+.add-project-input:required:valid,
+.add-project-textarea:required:valid {
+    border-left: 3px solid #10b981; /* Success green color */
+}
+
 /* Error Message */
 .add-project-error {
     color: #ff4d4d;
