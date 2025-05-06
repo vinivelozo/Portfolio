@@ -68,7 +68,6 @@ const AdminReviews: React.FC<{ language: string }> = ({ language }) => {
             <th>{language === 'en' ? "Username" : "Nom d'utilisateur"}</th>
             <th>{language === 'en' ? "Comment" : "Commentaire"}</th>
             <th>{language === 'en' ? "Stars" : "Étoiles"}</th>
-            <th>{language === 'en' ? "Created At" : "Créé le"}</th>
             <th>{language === 'en' ? "Visibility" : "Visibilité"}</th>
           </tr>
         </thead>
@@ -78,7 +77,6 @@ const AdminReviews: React.FC<{ language: string }> = ({ language }) => {
               <td>{review.username}</td>
               <td>{review.comment}</td>
               <td>⭐ {review.stars}/5</td>
-              <td>{new Date(review.createdAt).toLocaleString()}</td>
               <td>
                 <div 
                   className={`toggle-switch ${review.visible ? "on" : "off"}`}
