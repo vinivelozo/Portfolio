@@ -6,6 +6,26 @@ import "./Education.css";
 const Education: React.FC<{ language: string }> = ({ language }) => {
     const timelineEvents = [
         {
+            date: language === 'en' ? "Feb 2025 - May 2025" : "Février 2025 - Mai 2025",
+            icon: <FaLaptopCode />,
+            title: language === 'en' 
+                ? "Full Stack Developer - ACL Health Care Systems Inc." 
+                : "Développeur Full Stack - ACL Health Care Systems Inc.",
+            text: language === 'en' 
+                ? "Developed a complete web application for ACL Health Care Systems Inc. to manage appointments, invoices, customers and notifications."
+                : "Développé une application web complète pour ACL Health Care Systems Inc. pour gérer les rendez-vous, les factures, les clients et les notifications."
+        },
+        {
+            date: language === 'en' ? "Sept 2024 - Feb 2025" : "Septembre 2024 - Février 2025",
+            icon: <FaLaptopCode />,
+            title: language === 'en' 
+                ? "Full Stack Developer - C CLEAN INC" 
+                : "Développeur Full Stack - C CLEAN INC",
+            text: language === 'en' 
+                ? "Developed a complete web application for C Clean Inc to manage appointments, employees, and invoicing."
+                : "Développé une application web complète pour C Clean Inc afin de gérer les rendez-vous, les employés et la facturation."
+        },
+        {
             date: language === 'en' ? "June 2025" : "Juin 2025",
             icon: <FaGraduationCap />,
             title: language === 'en' 
@@ -14,17 +34,8 @@ const Education: React.FC<{ language: string }> = ({ language }) => {
             text: language === 'en' 
                 ? "Expected to complete a 3-year DEC in Computer Science, gaining hands-on experience in software development."
                 : "Prévu pour terminer un programme de D.E.C. en informatique de 3 ans, acquérant une expérience pratique en développement logiciel."
-        },
-        {
-            date: language === 'en' ? "Sept 2024 - Present" : "Septembre 2024 - Présent",
-            icon: <FaLaptopCode />,
-            title: language === 'en' 
-                ? "Full Stack Developer - C CLEAN INC" 
-                : "Développeur Full Stack - C CLEAN INC",
-            text: language === 'en' 
-                ? "Developed a complete web application for C Clean Inc to manage appointments, employees, and invoicing."
-                : "Développé une application web complète pour C Clean Inc afin de gérer les rendez-vous, les employés et la facturation."
         }
+        
     ];
 
     return (
