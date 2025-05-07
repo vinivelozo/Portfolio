@@ -25,7 +25,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home language={language} />} />
         <Route path="/projects" element={<Projects language={language} isAdmin={!!token} />} />
-        <Route path="/education" element={<Education language={language} />} />
+        <Route path="/education" element={<Education language={language} isAdmin={!!token}/>} />
         <Route path="/contact" element={<ContactMe language={language} />} />
         <Route path="/login" element={<Login setToken={setToken} language={language} />} />
         <Route path="/reviews" element={<Review language={language} />} />
